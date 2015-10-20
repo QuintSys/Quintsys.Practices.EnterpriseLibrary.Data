@@ -7,7 +7,7 @@ using Quintsys.System;
 
 namespace Quintsys.Practices.EnterpriseLibrary.Data.Sql
 {
-    public interface ITransactedConnection
+    public interface ITransactedConnection : IDisposable
     {
         /// <summary>
         ///     Opens a transacted database connection.
@@ -93,7 +93,7 @@ namespace Quintsys.Practices.EnterpriseLibrary.Data.Sql
     ///     Represents a connection to a SQL Server database.
     ///     The connection can be optionally within a database transaction.
     /// </summary>
-    public class TransactedConnection : IDisposable, ITransactedConnection
+    public class TransactedConnection : ITransactedConnection
     {
         private SqlDatabase Database { get; }
         private SqlConnection _connection;
